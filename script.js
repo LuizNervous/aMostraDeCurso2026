@@ -25,47 +25,60 @@ const projetosIIW25 = [
   },
   {
     codigo: "IIW25A",
-    titulo: "Clicker Money super legal",
-    autor: "Daniel",
+    titulo: "Aura The Clicker",
+    autor: "Daniel Flores",
     status: "Em andamento",
-    desc: "O melhor jogo clicker já feito usando JavaScript.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    imagem: "pdk.png",
-    link: "https://dan-pdk.github.io/btg-amostra/"
+    desc: "O melhor jogo clicker já feito usando JavaScript. Tem muita aura e ego 67 bandido resenha.",
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    imagem: "aura.png",
+    link: "https://aura-the-clicker.vercel.app/"
+
   },
   {
-    codigo: "IIW25-02",
-    titulo: "Nome do Projeto 2",
-    autor: "Autor 3",
-    status: "Protótipo",
-    desc: "Descrição detalhada do projeto para a mostra do curso.",
-    tags: ["React", "Node.js"],
-    imagem: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80",
-    link: "https://seusite.com/projeto2"
-  },
-  {
-    codigo: "IIW25-03",
-    titulo: "Nome do Projeto 3",
-    autor: "Autor 4, Autor 5",
+    codigo: "IIW25A",
+    titulo: "Conway",
+    autor: "Daniel Flores",
     status: "Concluído",
-    desc: "Descrição detalhada do projeto para a mostra do curso.",
-    tags: ["Python", "Flask"],
-    imagem: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80",
-    link: "https://seusite.com/projeto3"
+    desc: "Um simulador simples do Jogo da Vida de Conway.",
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    imagem: "cow.png",
+    link: "https://conway-eosin.vercel.app/"
+  },
+  {
+    codigo: "IIW25A",
+    titulo: "Labirinticos",
+    autor: "Daniel Flores",
+    status: "Concluído",
+    desc: "Tente completar labirintos gerados pelo computador em dificuldades cada vez maiores.",
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    imagem: "labirinto.png",
+    link: "https://labirintico.vercel.app/"
+  },
+
+  {
+    codigo: "IIW25A",
+    titulo: "Ergoritmos",
+    autor: "Daniel Flores",
+    status: "Concluído",
+    desc: "Crie sequências de instruções simples e veja os resultados ao vivo.",
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    imagem: "algoritmos.png",
+    link: "https://ergorithm.vercel.app/"
+
   }
 ];
 
 const projetosPFC24 = [
   {
-    
-codigo: "IIW24A", 
-titulo: "APASBAC - Site",
-autor: "Luana Sathler, Kamilla Maria",
-status: "Em andamento",
-desc: "Site desenvolvido para mostrar animais em adoção na APASBAC.",
-tags: ["HTML", "CSS", "JS"],
-imagem:"apasbac.png",
-link: "https://apasbac.vercel.app"
+
+    codigo: "IIW24A",
+    titulo: "APASBAC - Site",
+    autor: "Luana Sathler, Kamilla Maria",
+    status: "Em andamento",
+    desc: "Site desenvolvido para mostrar animais em adoção na APASBAC.",
+    tags: ["HTML", "CSS", "JS"],
+    imagem: "apasbac.png",
+    link: "https://apasbac.vercel.app"
   },
   {
     codigo: "PFC24-01",

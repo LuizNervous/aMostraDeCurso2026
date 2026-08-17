@@ -57,6 +57,27 @@ const projetosIIW25 = [
 
 const projetosPFC24 = [
   {
+    
+codigo: "IIW24A", 
+titulo: "APASBAC - Site",
+autor: "Luana Sathler, Kamilla Maria",
+status: "Em andamento",
+desc: "Site desenvolvido para mostrar animais em adoção na APASBAC.",
+tags: ["HTML", "CSS", "JS"],
+imagem:"apasbac.png",
+link: "https://apasbac.vercel.app"
+  },
+  {
+    codigo: "PFC24-01",
+    titulo: "Nome do PFC 1",
+    autor: "Autor A, Autor B",
+    status: "Concluído",
+    desc: "Descrição do projeto final de curso.",
+    tags: ["PHP", "MySQL"],
+    imagem: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&auto=format&fit=crop&q=80",
+    link: "https://seusite.com/pfc1"
+  },
+  {
     codigo: "PFC24-01",
     titulo: "Nome do PFC 1",
     autor: "Autor A, Autor B",

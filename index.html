@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostra de Projetos — IIW25 & PFC IIW24</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="main-header">
+    <p class="eyebrow">Mostra de projetos</p>
+    <h1>Projetos IIW25 & PFC IIW24</h1>
+  </header>
+
+  <!-- Banner Superior: Carrossel contínuo apenas para exibição -->
+  <section class="banner-section">
+    <div class="marquee">
+      <div class="marquee-track" id="marquee-track"></div>
+    </div>
+  </section>
+
+  <!-- Seção Inferior: Grade fixa interativa -->
+  <section class="grid-section">
+    <div class="section-header">
+      <h2>Todos os Projetos</h2>
+      <div class="tabs" data-active="iiw25" id="tabs">
+        <button class="tab active" data-target="iiw25">IIW25 — Projetos</button>
+        <button class="tab" data-target="pfc">IIW24 — PFC</button>
+      </div>
+    </div>
+
+    <div class="projects-grid" id="grid-iiw25"></div>
+    <div class="projects-grid" id="grid-pfc" style="display: none;"></div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

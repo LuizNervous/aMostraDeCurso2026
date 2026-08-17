@@ -1,3 +1,61 @@
+:root {
+  --bg: #101B33;
+  --bg-soft: #16264A;
+  --card: #182A52;
+  --card-border: #2A3E6B;
+  --ink: #F1F1EC;
+  --ink-muted: #9AACC7;
+  --amber: #FFC94A;
+  --amber-ink: #3A2C05;
+  --teal: #22C1A4;
+  --teal-ink: #04241D;
+  --radius: 14px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 500px at 15% -10%, rgba(255, 201, 74, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 100% 10%, rgba(34, 193, 164, 0.10), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  padding: 40px 20px 80px;
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.main-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 8px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  margin: 0;
+}
 :root{
   --bg: #101B33;
   --bg-soft: #16264A;
@@ -61,16 +119,16 @@ h1{
   display: flex;
   overflow: hidden;
   user-select: none;
-  pointer-events: none; /* Desativa qualquer interação do usuário */
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  pointer-events: none; /* Desativa interações */
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
 .marquee-track {
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: scrollMarquee 35s linear infinite;
+  animation: scrollMarquee 38s linear infinite;
 }
 
 @keyframes scrollMarquee {
@@ -79,22 +137,37 @@ h1{
 }
 
 .card-passive {
-  width: 280px;
+  width: 290px;
   flex: 0 0 auto;
   background: rgba(24, 42, 82, 0.6);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  opacity: 0.85;
+  gap: 10px;
+  opacity: 0.88;
+}
+
+.card-passive-img {
+  width: 100%;
+  height: 110px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.card-passive-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card-passive h4 {
   font-family: var(--font-display);
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -103,7 +176,7 @@ h1{
 .card-passive .autor {
   font-size: 12px;
   color: var(--ink-muted);
-  margin: 0;
+  margin: -4px 0 0;
 }
 
 /* ---- Seção de Grade Fixa ---- */
@@ -160,14 +233,14 @@ h1{
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .card{
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 16px 16px 20px;
   display:flex;
   flex-direction: column;
   gap: 12px;
@@ -180,11 +253,32 @@ h1{
 .card:hover{
   transform: translateY(-4px);
   border-color: var(--amber);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
 }
 
 .projects-grid[id="grid-pfc"] .card:hover {
   border-color: var(--teal);
+}
+
+/* Imagem do Card Fixos */
+.card-img {
+  width: 100%;
+  height: 165px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.05); /* Efeito suave de zoom na imagem ao passar o mouse */
 }
 
 .card-top{
@@ -225,7 +319,7 @@ h1{
 .card .autor{
   font-size: 13px;
   color: var(--ink-muted);
-  margin: -4px 0 0;
+  margin: -6px 0 0;
 }
 
 .card p.desc{
@@ -275,4 +369,256 @@ h1{
   .tabs { width: 100%; }
   .tab { flex: 1; text-align: center; }
   .projects-grid { grid-template-columns: 1fr; }
+}
+/* ---- Carrossel Superior (Letreiro Automático) ---- */
+.banner-section {
+  margin-bottom: 48px;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+  /* Desativa qualquer interação do usuário */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollMarquee 35s linear infinite;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.card-passive {
+  width: 280px;
+  flex: 0 0 auto;
+  background: rgba(24, 42, 82, 0.6);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0.85;
+}
+
+.card-passive h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-passive .autor {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+/* ---- Seção de Grade Fixa ---- */
+.section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 16px;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin: 0;
+}
+
+/* ---- Seletor de Turma (Tabs) ---- */
+.tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--bg-soft);
+  padding: 5px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+}
+
+.tab {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.tab:hover {
+  color: var(--ink);
+}
+
+.tab.active {
+  background: var(--amber);
+  color: var(--amber-ink);
+}
+
+.tabs[data-active="pfc"] .tab.active {
+  background: var(--teal);
+  color: var(--teal-ink);
+}
+
+/* ---- Grade de Cards ---- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--amber);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.projects-grid[id="grid-pfc"] .card:hover {
+  border-color: var(--teal);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.code-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--amber);
+  background: rgba(255, 201, 74, 0.10);
+  border: 1px solid rgba(255, 201, 74, 0.35);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.projects-grid[id="grid-pfc"] .code-tag {
+  color: var(--teal);
+  background: rgba(34, 193, 164, 0.10);
+  border-color: rgba(34, 193, 164, 0.35);
+}
+
+.status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card .autor {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: -4px 0 0;
+}
+
+.card p.desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #D6DCEA;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  border: 1px solid var(--card-border);
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.link-icon {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--amber);
+  white-space: nowrap;
+}
+
+.projects-grid[id="grid-pfc"] .link-icon {
+  color: var(--teal);
+}
+
+@media (max-width: 560px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .tab {
+    flex: 1;
+    text-align: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }

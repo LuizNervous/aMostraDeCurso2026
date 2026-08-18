@@ -88,6 +88,16 @@ const projetosPFC24 = [
   },
   {
     codigo: "IIW24A",
+    titulo: "EstudoTECA - Site",
+    autor: "Brian",
+    status: "Em andamento",
+    desc: "Site feito para promover o estudo e a organização de estudantes do IFPR.",
+    tags: ["HTML", "CSS", "JS","MongoDB"],
+    imagem: "estudo.png",
+    link: "https://fluffy-panda-5b41f4.netlify.app/login.html"
+  },
+  {
+    codigo: "IIW24A",
     titulo: "Agenda Acadêmica Digital",
     autor: "Luana Borborema, Ana Paula Marcussi",
     status: "Em testes finais",

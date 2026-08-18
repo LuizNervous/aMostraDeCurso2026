@@ -350,7 +350,30 @@
 .footer-bottom p {
   margin: 0;
 }
+.btn-like {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
 
+.btn-like:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-like.curtido {
+  background: rgba(231, 76, 60, 0.2);
+  border-color: #e74c3c;
+  color: #ff6b6b;
+}
 .footer-status {
   display: flex;
   align-items: center;
@@ -661,6 +684,7 @@ h1{
 }
 
 .card{
+  position: relative;
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
@@ -921,6 +945,7 @@ img {
 }
 
 .card {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
@@ -1044,5 +1069,177 @@ img {
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   BARRA DE ESTATÍSTICAS (contador geral)
+   ========================================================= */
+
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+
+  margin: 0 0 40px;
+  padding: 18px 24px;
+
+  background: var(--bg-soft);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 72px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--amber);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--card-border);
+}
+
+@media (max-width: 560px) {
+  .stats-bar {
+    gap: 14px;
+    padding: 14px 10px;
+  }
+
+  .stat-value {
+    font-size: 21px;
+  }
+
+  .stat-item {
+    min-width: 58px;
+  }
+}
+
+
+/* =========================================================
+   SELO "MAIS CURTIDO"
+   ========================================================= */
+
+.badge-destaque {
+  display: none;
+  align-items: center;
+  gap: 4px;
+
+  position: absolute;
+  top: -12px;
+  right: 14px;
+  z-index: 2;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FFD84D, #FF9F1C);
+
+  color: #3A2C05;
+
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  box-shadow: 0 6px 16px rgba(255, 159, 28, .45);
+}
+
+.card.card-destaque {
+  border-color: #FFC94A;
+  box-shadow: 0 10px 30px rgba(255, 201, 74, .22);
+}
+
+.card.card-destaque .badge-destaque {
+  display: flex;
+}
+
+
+/* =========================================================
+   EASTER EGG (bug escondido no canto da tela)
+   ========================================================= */
+
+.easter-egg {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 50;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  font-size: 15px;
+  line-height: 1;
+
+  opacity: 0.12;
+  filter: grayscale(1);
+
+  animation: easterEggCrawl 9s ease-in-out infinite;
+  transition: opacity .3s ease, filter .3s ease, transform .3s ease;
+}
+
+.easter-egg:hover,
+.easter-egg:focus-visible {
+  opacity: 0.85;
+  filter: grayscale(0);
+  animation-play-state: paused;
+  transform: scale(1.2);
+}
+
+.easter-egg:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@keyframes easterEggCrawl {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%      { transform: translate(-6px, -3px) rotate(-10deg); }
+  50%      { transform: translate(3px, -7px) rotate(8deg); }
+  75%      { transform: translate(-3px, 2px) rotate(-5deg); }
+}
+
+@media (max-width: 480px) {
+  .easter-egg {
+    bottom: 14px;
+    right: 14px;
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .easter-egg {
+    animation: none;
   }
 }

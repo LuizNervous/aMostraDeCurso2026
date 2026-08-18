@@ -29,10 +29,9 @@ const projetosIIW25 = [
     autor: "Daniel Flores",
     status: "Em andamento",
     desc: "O melhor jogo clicker já feito usando JavaScript. Tem muita aura e ego 67 bandido resenha.",
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ["HTML", "CSS", "JavaScript"],
     imagem: "aura.png",
     link: "https://aura-the-clicker.vercel.app/"
-
   },
   {
     codigo: "IIW25A",
@@ -40,7 +39,7 @@ const projetosIIW25 = [
     autor: "Daniel Flores",
     status: "Concluído",
     desc: "Um simulador simples do Jogo da Vida de Conway.",
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ["HTML", "CSS", "JavaScript"],
     imagem: "cow.png",
     link: "https://conway-eosin.vercel.app/"
   },
@@ -50,27 +49,34 @@ const projetosIIW25 = [
     autor: "Daniel Flores",
     status: "Concluído",
     desc: "Tente completar labirintos gerados pelo computador em dificuldades cada vez maiores.",
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ["HTML", "CSS", "JavaScript"],
     imagem: "labirinto.png",
     link: "https://labirintico.vercel.app/"
   },
-
   {
     codigo: "IIW25A",
     titulo: "Ergoritmos",
     autor: "Daniel Flores",
     status: "Concluído",
     desc: "Crie sequências de instruções simples e veja os resultados ao vivo.",
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    tags: ["HTML", "CSS", "JavaScript"],
     imagem: "algoritmos.png",
     link: "https://ergorithm.vercel.app/"
-
+  },
+  {
+    codigo: "IIW25A",
+    titulo: "CheckMente",
+    autor: "Emanoelly Borges",
+    status: "Terminado",
+    desc: "Um site para você desabafar e fazer seu check-in emocional.",
+    tags: ["HTML", "CSS", "JS", "Supabase"],
+    imagem: "mente.png",
+    link: "https://tangerine-dragon-ed8965.netlify.app/"
   }
 ];
 
 const projetosPFC24 = [
   {
-
     codigo: "IIW24A",
     titulo: "APASBAC - Site",
     autor: "Luana Sathler, Kamilla Maria",
@@ -81,40 +87,41 @@ const projetosPFC24 = [
     link: "https://apasbac.vercel.app"
   },
   {
-    codigo: "PFC24-01",
-    titulo: "Nome do PFC 1",
-    autor: "Autor A, Autor B",
-    status: "Concluído",
-    desc: "Descrição do projeto final de curso.",
-    tags: ["PHP", "MySQL"],
-    imagem: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&auto=format&fit=crop&q=80",
-    link: "https://seusite.com/pfc1"
-  },
-  {
-    codigo: "PFC24-01",
-    titulo: "Nome do PFC 1",
-    autor: "Autor A, Autor B",
-    status: "Concluído",
-    desc: "Descrição do projeto final de curso.",
-    tags: ["PHP", "MySQL"],
-    imagem: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&auto=format&fit=crop&q=80",
-    link: "https://seusite.com/pfc1"
-  },
-  {
-    codigo: "PFC24-02",
-    titulo: "Nome do PFC 2",
-    autor: "Autor C",
-    status: "Concluído",
-    desc: "Descrição do projeto final de curso.",
-    tags: ["Java", "Spring"],
-    imagem: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
-    link: "https://seusite.com/pfc2"
+    codigo: "IIW24A",
+    titulo: "Agenda Acadêmica Digital",
+    autor: "Luana Borborema, Ana Paula Marcussi",
+    status: "Em testes finais",
+    desc: "Uma Solução de Organização e Acessibilidade para Estudantes do IFPR",
+    tags: ["HTML", "CSS", "JS"],
+    imagem: "agenda.png",
+    link: "https://agenda-academica-backend-w48m.onrender.com"
   }
 ];
 
 /* ========================================================= */
 
 const imagemPadrao = "https://via.placeholder.com/600x350/182A52/9AACC7?text=Sem+Imagem";
+
+function obterCaminhoImagem(imagem) {
+  if (!imagem) return imagemPadrao;
+  if (imagem.startsWith("http://") || imagem.startsWith("https://")) return imagem;
+  return `imagens/${imagem}`;
+}
+
+// Anima um número subindo de 0 até o valor final nas estatísticas do topo
+function animarContador(elemento, valorFinal, duracaoMs = 900) {
+  if (!elemento) return;
+  const inicioTempo = performance.now();
+
+  function passo(agora) {
+    const progresso = Math.min((agora - inicioTempo) / duracaoMs, 1);
+    const valorAtual = Math.round(valorFinal * progresso);
+    elemento.textContent = valorAtual;
+    if (progresso < 1) requestAnimationFrame(passo);
+  }
+
+  requestAnimationFrame(passo);
+}
 
 function renderMarquee() {
   const track = document.getElementById("marquee-track");
@@ -124,11 +131,11 @@ function renderMarquee() {
   const listaDuplicada = [...todosProjetos, ...todosProjetos];
 
   track.innerHTML = listaDuplicada.map(p => {
-    const imgSrc = p.imagem || imagemPadrao;
+    const imgSrc = obterCaminhoImagem(p.imagem);
     return `
       <div class="card-passive">
         <div class="card-passive-img">
-          <img src="imagens/${imgSrc}" alt="${p.titulo || 'Projeto'}" loading="lazy">
+          <img src="${imgSrc}" alt="${p.titulo || 'Projeto'}" loading="lazy">
         </div>
         <span class="code-tag" style="align-self: flex-start; font-size:10px;">${p.codigo || 'S/N'}</span>
         <h4>${p.titulo || 'Sem título'}</h4>
@@ -140,13 +147,13 @@ function renderMarquee() {
 
 function cardGridHTML(p) {
   const url = p.link || "#";
-  const imgSrc = p.imagem || imagemPadrao;
+  const imgSrc = obterCaminhoImagem(p.imagem);
   const tagsList = Array.isArray(p.tags) ? p.tags : [];
 
   return `
     <a class="card" href="${url}" target="_blank" rel="noopener noreferrer">
       <div class="card-img">
-        <img src="imagens/${imgSrc}" alt="${p.titulo || 'Projeto'}" loading="lazy">
+        <img src="${imgSrc}" alt="${p.titulo || 'Projeto'}" loading="lazy">
       </div>
       <div class="card-top">
         <span class="code-tag">${p.codigo || 'S/N'}</span>
@@ -167,12 +174,8 @@ function renderGrids() {
   const gridIIW25 = document.getElementById("grid-iiw25");
   const gridPFC = document.getElementById("grid-pfc");
 
-  if (gridIIW25) {
-    gridIIW25.innerHTML = projetosIIW25.map(cardGridHTML).join("");
-  }
-  if (gridPFC) {
-    gridPFC.innerHTML = projetosPFC24.map(cardGridHTML).join("");
-  }
+  if (gridIIW25) gridIIW25.innerHTML = projetosIIW25.map(cardGridHTML).join("");
+  if (gridPFC) gridPFC.innerHTML = projetosPFC24.map(cardGridHTML).join("");
 }
 
 function initTabs() {
@@ -202,9 +205,17 @@ function initTabs() {
   });
 }
 
-// Executa somente quando o documento HTML estiver totalmente pronto
+function inicializarStats() {
+  const todosProjetos = [...projetosIIW25, ...projetosPFC24];
+  const totalTurmas = new Set(todosProjetos.map(p => p.codigo)).size;
+
+  animarContador(document.getElementById("stat-projetos"), todosProjetos.length);
+  animarContador(document.getElementById("stat-turmas"), totalTurmas || 2);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderMarquee();
   renderGrids();
   initTabs();
+  inicializarStats();
 });

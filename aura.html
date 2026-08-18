@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Supremo +1.000.000 Aura 🗿🍷</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Impact&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --aura-gold: #ffd700;
+      --aura-purple: #8a2be2;
+      --cringe-red: #ff4757;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Impact', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #8a2be2, #ffd700, #ff007f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 0px 20px rgba(138, 43, 226, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .aura-counter-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--aura-purple);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(138, 43, 226, 0.3);
+      margin-bottom: 30px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .aura-val {
+      font-size: 2.5rem;
+      color: var(--aura-gold);
+      font-weight: bold;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #1e1e24;
+      color: #fff;
+      border: 2px solid #333;
+      padding: 12px 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-gain { border-color: var(--aura-gold); color: var(--aura-gold); }
+    .btn-lose { border-color: var(--cringe-red); color: var(--cringe-red); }
+    .btn-mewing { border-color: var(--aura-purple); color: #00f2fe; }
+
+    /* GRID DE MEMES COM PLACEHOLDERS DE IMAGEM */
+    .meme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card-meme {
+      background: #141419;
+      border: 1px solid #2a2a35;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card-meme:hover {
+      transform: translateY(-5px);
+      border-color: var(--aura-gold);
+    }
+
+    .img-container {
+      width: 100%;
+      height: 220px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      border: 1px dashed #444;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--aura-purple);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    /* EFECTS */
+    .mewing-active {
+      filter: drop-shadow(0 0 15px #00f2fe);
+      border-color: #00f2fe !important;
+    }
+
+    .shake {
+      animation: shakeAnim 0.3s ease-in-out infinite;
+    }
+
+    @keyframes shakeAnim {
+      0% { transform: translate(2px, 2px) rotate(0deg); }
+      50% { transform: translate(-2px, -2px) rotate(1deg); }
+      100% { transform: translate(2px, -2px) rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🗿 AURA SUPREMA 🍷</h1>
+  <p>Digite <strong>AURA</strong> no teclado para o segredo Supremo.</p>
+
+  <!-- CONTADOR DE AURA INTERATIVO -->
+  <div class="aura-counter-box" id="auraBox">
+    <div>SUA AURA ATUAL:</div>
+    <div class="aura-val" id="auraDisplay">+1.000.000</div>
+    <p id="auraStatus">Status: Boss Final de Assis</p>
+
+    <div class="btn-group">
+      <button class="btn-gain" onclick="modificarAura(250000, 'Salvou a idosa no trânsito!')">+250k Aura 🗿</button>
+      <button class="btn-lose" onclick="modificarAura(-500000, 'Tropeçou no corredor e tentou disfarçar correndo')">-500k Aura 💀</button>
+      <button class="btn-mewing" onclick="ativarMewing()">Modo Mewing 🤫🧏‍♂️</button>
+      <button onclick="testarRizz()">Testar Rizz 🔥</button>
+    </div>
+  </div>
+
+  <!-- GRADE DE MEMES COM LOCAIS DAS IMAGENS -->
+  <div class="meme-grid">
+
+    <!-- CARD 1 -->
+    <div class="card-meme">
+      <span class="tag">#SIGMA</span>
+      <div class="img-container">
+        <!-- 🖼️ IMAGEM 1: COLOQUE SEU MEME/GIGACHAD AQUI -->
+        <!-- Exemplo: src="imagens/gigachad.jpg" ou link da internet -->
+        <img src="imagens/mogger.png" alt="Meme Aura 1" id="img1">
+      </div>
+      <h3>O Verdadeiro Sigma</h3>
+      <p>"Não fala nada na aula, faz Mewing constante e gabarita a prova."</p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card-meme">
+      <span class="tag">#RIZZLER</span>
+      <div class="img-container">
+        <!-- 🖼️ IMAGEM 2: COLOQUE SEU MEME DO RIZZ / RESENHA AQUI -->
+        <img src="imagens/67.png" alt="Meme Aura 2" id="img2">
+      </div>
+      <h3>Resenha 67 Bandido</h3>
+      <p>"Olhar açucarado com olhar de julgar a alma ao mesmo tempo."</p>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card-meme">
+      <span class="tag">#FINAL_BOSS</span>
+      <div class="img-container">
+        <!-- 🖼️ IMAGEM 3: FOTO DO SEU AMIGO OU MEME DO BOSS -->
+        <img src="imagens/aurudo.png" alt="Meme Aura 3" id="img3">
+      </div>
+      <h3>Boss Final do IFPR</h3>
+      <p>"Passa de ano sem abrir o caderno e com +999.999 de aura acumulada."</p>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card-meme">
+      <span class="tag">#SKIBIDI_LOGIC</span>
+      <div class="img-container">
+        <!-- 🖼️ IMAGEM 4: OUTRO MEME ALEATÓRIO/CURSADO -->
+        <img src="imagens/negou.png" alt="Meme Aura 4" id="img4">
+      </div>
+      <h3>Aura Negativa Instantânea</h3>
+      <p>"Mandou mensagem no grupo errado e a professora leu ao vivo no projetor."</p>
+    </div>
+
+  </div>
+
+  <script>
+    let aura = 1000000;
+    const auraDisplay = document.getElementById('auraDisplay');
+    const auraStatus = document.getElementById('auraStatus');
+    const auraBox = document.getElementById('auraBox');
+
+    function formatarNumero(num) {
+      return (num >= 0 ? "+" : "") + num.toLocaleString('pt-BR');
+    }
+
+    function modificarAura(qtd, motivo) {
+      aura += qtd;
+      auraDisplay.textContent = formatarNumero(aura);
+
+      if (qtd > 0) {
+        if (typeof confetti === 'function') confetti({ particleCount: 30, spread: 50 });
+        auraStatus.innerHTML = `<span style="color: #00ff66;">${motivo}</span>`;
+      } else {
+        document.body.classList.add('shake');
+        setTimeout(() => document.body.classList.remove('shake'), 400);
+        auraStatus.innerHTML = `<span style="color: var(--cringe-red);">${motivo}</span>`;
+      }
+
+      // Reavalia título de acordo com a aura
+      if (aura > 2000000) auraStatus.innerHTML += " <br>🏆 <strong>Entidade Deus da Aura</strong>";
+      else if (aura < 0) auraStatus.innerHTML += " <br>💀 <strong>Aura Negativa! Vá fazer Mewing urgente!</strong>";
+    }
+
+    function ativarMewing() {
+      auraBox.classList.toggle('mewing-active');
+      alert("🤫 🤫 🤫\n\nSHHH! Modo Mewing Ativado! Sem papo furado, apenas Maxilar Trincado!");
+      modificarAura(100000, "Mantenha a língua no céu da boca!");
+    }
+
+    function testarRizz() {
+      const niveis = [
+        "Rizzler Supremo de Assis",
+        "Rizz de Criança Chorando",
+        "Olhar Açucarado nível 100",
+        "Zero Rizz (Vá estudar JavaScript)",
+        "Rizz Involuntário Cósmico"
+      ];
+      const sorteado = niveis[Math.floor(Math.random() * niveis.length)];
+      alert(`Seu resultado do Teste de Rizz:\n\n🔥 ${sorteado}`);
+    }
+
+    // EASTER EGG: Digitar a palavra "AURA" no teclado
+    let codigodigitado = "";
+    document.addEventListener('keydown', (e) => {
+      codigodigitado += e.key.toUpperCase();
+      if (codigodigitado.length > 4) codigodigitado = codigodigitado.substr(1);
+
+      if (codigodigitado === "AURA") {
+        if (typeof confetti === 'function') {
+          confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+        }
+        modificarAura(10000000, "SISTEMA HACKEADO! +10 MILHÕES DE AURA LIBERADOS!");
+        alert("🚨 AURA OVERLOAD! VOCÊ DESCOBRIU O CÓDIGO SECRETO! 🚨");
+      }
+    });
+  </script>
+</body>
+</html>
